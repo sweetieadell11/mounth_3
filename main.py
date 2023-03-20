@@ -1,16 +1,19 @@
-# This is a sample Python script.
+from aiogram import Bot, Dispatcher, types
+from aiogram.utils import executor
+from handlers.config import dp
+from decouple import config
+from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
+import random
+from handlers.client import register_handlers_client
+from handlers.call_back import register_handlers_callback
+from handlers.extra import register_handlers_extra
+register_handlers_callback(dp)
+register_handlers_client(dp)
+register_handlers_extra(dp)
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
 
 
-# Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+    executor.start_polling(dp, skip_updates=True)
