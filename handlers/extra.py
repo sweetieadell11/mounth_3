@@ -1,4 +1,4 @@
-from handlers.config import bot, dp
+from config import bot
 from aiogram import types, Dispatcher
 from random import choice
 

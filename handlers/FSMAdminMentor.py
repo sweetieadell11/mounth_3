@@ -3,7 +3,7 @@ from aiogram.dispatcher import FSMContext
 from aiogram.dispatcher.filters import Text
 from aiogram.dispatcher.filters.state import State, StatesGroup
 from keyboards import client_kb
-# from database.bot_db import sql_command_insert
+from database.bot_db import sql_command_insert
 from config import ADMINS
 from uuid import uuid4
 #FINITE STATE MACHINE
@@ -65,7 +65,7 @@ async def load_group(message: types.Message, state: FSMContext):
 
 async def submit(message: types.Message, state: FSMContext):
     if message.text == "ДА":
-        # await sql_command_insert(state)
+        await sql_command_insert(state)
         await state.finish()
         await message.answer("Ты зареган!")
     elif message.text == "НЕТ":
