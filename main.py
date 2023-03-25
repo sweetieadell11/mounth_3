@@ -3,10 +3,12 @@ from aiogram.utils import executor
 from handlers import call_back, client, admin, extra, FSMAdminMentor, notification
 import logging
 from database.bot_db import sql_create
+from handlers.notification import set_scheduler
 
 async def on_startup(_):
     await bot.send_message(chat_id=ADMINS[0],
                            text="Bot started!")
+    set_scheduler()
     sql_create()
 
 FSMAdminMentor.register_handlers_fsm_anketa(dp)
